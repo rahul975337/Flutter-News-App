@@ -3,9 +3,9 @@
 A new Flutter project.
 
 ## To Contribute to this repo
-1.Star the repo.
-2.Fork it.
-3.Clone the repo to your local system.
+1.Star the repo.  
+2.Fork it.  
+3.Clone the repo to your local system.  
 4.Make suitable and genuine changes.
 5.Create and checkout branch with your name (git checkout -b username)
 6.Add the newly added files (git add .)
