@@ -18,7 +18,10 @@ class _HomePageState extends State<HomePage> {
 
   List<CategorieModel> categories = List<CategorieModel>();
 
-  void getNews() async {
+  Future<void> getNews() async {
+    setState(() {
+      _loading = true;
+    });
     News news = News();
     await news.getNews();
     newslist = news.news;
@@ -29,7 +32,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    _loading = true;
     super.initState();
 
     categories = getCategories();
@@ -47,61 +49,64 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Container(
-            child: Column(
-              children: <Widget>[
-                SizedBox(
-                  height: 10,
-                ),
+        child: RefreshIndicator(
+          child: SingleChildScrollView(
+            child: Container(
+              child: Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: 10,
+                  ),
 
-                /// Categories
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
-                  height: 80,
-                  child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: categories.length,
-                      itemBuilder: (context, index) {
-                        return CategoryCard(
-                          imageAssetUrl: categories[index].imageAssetUrl,
-                          categoryName: categories[index].categorieName,
-                        );
-                      }),
-                ),
-                Divider(),
-
-                /// News Article
-
-                if (_loading)
-                  Column(
-                    children: [
-                      SizedBox(
-                        height: deviceSize.height * 0.25,
-                      ),
-                      CircularProgressIndicator(),
-                    ],
-                  )
-                else
+                  /// Categories
                   Container(
-                    margin: EdgeInsets.only(top: 5),
+                    padding: EdgeInsets.symmetric(horizontal: 16),
+                    height: 80,
                     child: ListView.builder(
-                        itemCount: newslist.length,
-                        shrinkWrap: true,
-                        physics: ClampingScrollPhysics(),
+                        scrollDirection: Axis.horizontal,
+                        itemCount: categories.length,
                         itemBuilder: (context, index) {
-                          return NewsTile(
-                            imgUrl: newslist[index].urlToImage ?? "",
-                            title: newslist[index].title ?? "",
-                            desc: newslist[index].description ?? "",
-                            content: newslist[index].content ?? "",
-                            posturl: newslist[index].articleUrl ?? "",
+                          return CategoryCard(
+                            imageAssetUrl: categories[index].imageAssetUrl,
+                            categoryName: categories[index].categorieName,
                           );
                         }),
                   ),
-              ],
+                  Divider(),
+
+                  /// News Article
+
+                  if (_loading)
+                    Column(
+                      children: [
+                        SizedBox(
+                          height: deviceSize.height * 0.25,
+                        ),
+                        CircularProgressIndicator(),
+                      ],
+                    )
+                  else
+                    Container(
+                      margin: EdgeInsets.only(top: 5),
+                      child: ListView.builder(
+                          itemCount: newslist.length,
+                          shrinkWrap: true,
+                          physics: ClampingScrollPhysics(),
+                          itemBuilder: (context, index) {
+                            return NewsTile(
+                              imgUrl: newslist[index].urlToImage ?? "",
+                              title: newslist[index].title ?? "",
+                              desc: newslist[index].description ?? "",
+                              content: newslist[index].content ?? "",
+                              posturl: newslist[index].articleUrl ?? "",
+                            );
+                          }),
+                    ),
+                ],
+              ),
             ),
           ),
+          onRefresh: getNews,
         ),
       ),
     );
