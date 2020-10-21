@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+
 import 'package:newsApp/helper/news.dart';
 import 'package:newsApp/helper/widgets.dart';
+
 
 class CategoryNews extends StatefulWidget {
   final String newsCategory;
@@ -13,12 +15,12 @@ class CategoryNews extends StatefulWidget {
 
 class _CategoryNewsState extends State<CategoryNews> {
   var newslist;
-  bool _loading = true;
+  bool _loading;
 
   @override
   void initState() {
+    _loading = true;
     getNews();
-    // TODO: implement initState
     super.initState();
   }
 
@@ -36,9 +38,10 @@ class _CategoryNewsState extends State<CategoryNews> {
     return Scaffold(
       appBar: AppBar(
         title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Text(
+
               '${widget.newsCategory}'[0].toUpperCase(),
               style: TextStyle(color: Colors.blue, fontWeight: FontWeight.w600),
             ),
@@ -51,7 +54,7 @@ class _CategoryNewsState extends State<CategoryNews> {
         ),
         actions: <Widget>[
           Opacity(
-            opacity: 0,
+            opacity: 0.8,
             child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 16),
                 child: Icon(
@@ -59,8 +62,8 @@ class _CategoryNewsState extends State<CategoryNews> {
                 )),
           )
         ],
-        backgroundColor: Colors.transparent,
-        elevation: 0.0,
+        backgroundColor: Colors.white,
+        elevation: 1.0,
       ),
       body: _loading
           ? Center(
