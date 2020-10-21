@@ -7,7 +7,7 @@ A new Flutter project.
 2.Fork it.  
 3.Clone the repo to your local system.  
 4.Make suitable and genuine changes.  
-5.Create and checkout branch with your name (git checkout -b username)  
+5.Create and checkout branch with your name (git checkout -b branchName)  
 6.Add the newly added files (git add .)  
 7.Commit (git commit -m 'your message here')  
 8.Push (git push -u origin branchName)  
