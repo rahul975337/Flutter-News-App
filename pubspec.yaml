@@ -16,6 +16,7 @@ dependencies:
   http: ^0.12.2
   cached_network_image: ^2.3.3
   webview_flutter: ^1.0.3
+  share: ^0.6.5+3
 
 dev_dependencies:
   flutter_test:
