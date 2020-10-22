@@ -22,6 +22,7 @@ dependencies:
   swipedetector: ^1.2.0
   provider:
   font_awesome_flutter:
+  date_format: ^1.0.9
 
 dev_dependencies:
   flutter_test:
