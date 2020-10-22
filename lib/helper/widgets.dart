@@ -1,7 +1,8 @@
+import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 import '../views/article_view.dart';
 
-Widget MyAppBar(IconButton iconButton) {
+Widget myAppBar(IconButton iconButton) {
   return AppBar(
     title: Row(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -23,13 +24,15 @@ Widget MyAppBar(IconButton iconButton) {
 
 class NewsTile extends StatelessWidget {
   final String imgUrl, title, desc, content, posturl;
+  final DateTime publishedAt;
 
   NewsTile(
       {this.imgUrl,
       this.desc,
       this.title,
       this.content,
-      @required this.posturl});
+      @required this.posturl,
+      this.publishedAt});
 
   @override
   Widget build(BuildContext context) {
@@ -88,6 +91,21 @@ class NewsTile extends StatelessWidget {
                         desc,
                         maxLines: 2,
                         style: TextStyle(color: Colors.grey, fontSize: 14),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 12,
+                    ),
+                    Container(
+                      color: Colors.black,
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                      child: Text(
+                        "Published at: " +
+                            formatDate(publishedAt,
+                                [dd, '/', mm, '/', yyyy, ' ', HH, ':', nn]),
+                        maxLines: 2,
+                        style: TextStyle(color: Colors.white, fontSize: 14),
                       ),
                     )
                   ],

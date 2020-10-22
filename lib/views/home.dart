@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
     final theme = Provider.of<ThemeNotifier>(context);
     final deviceSize = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: MyAppBar(
+      appBar: myAppBar(
         IconButton(
             splashRadius: 25.0,
             icon: theme.myTheme == MyTheme.Light
@@ -111,6 +111,8 @@ class _HomePageState extends State<HomePage> {
                               desc: newslist[index].description ?? "",
                               content: newslist[index].content ?? "",
                               posturl: newslist[index].articleUrl ?? "",
+                              publishedAt:
+                                  newslist[index].publshedAt ?? DateTime.now(),
                             );
                           }),
                     ),

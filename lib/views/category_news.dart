@@ -83,6 +83,8 @@ class _CategoryNewsState extends State<CategoryNews> {
                             desc: newslist[index].description ?? "",
                             content: newslist[index].content ?? "",
                             posturl: newslist[index].articleUrl ?? "",
+                            publishedAt:
+                                newslist[index].publshedAt ?? DateTime.now(),
                           );
                         }),
                   ),
