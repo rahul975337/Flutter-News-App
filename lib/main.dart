@@ -2,6 +2,7 @@ import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:newsApp/views/home.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'helper/theme.dart';
 import 'views/home.dart';
 
@@ -28,10 +29,37 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  SharedPreferences applicationPreference;
+  bool isFirstTime;
+  bool isDarkTheme = false;
+
+  @override
+  void initState() {
+    super.initState();
+    SharedPreferences.getInstance().then((pref) {
+      applicationPreference = pref;
+      isFirstTime = pref.getBool("isFirstTime");
+      if (isFirstTime == null) {
+        print("firstTime");
+        applicationPreference.setBool("isFirstTime", false);
+        applicationPreference.setBool("isDarkTheme", false);
+        isDarkTheme = false;
+      } else {
+        isDarkTheme = applicationPreference.getBool("isDarkTheme");
+        if (isDarkTheme) {
+          Provider.of<ThemeNotifier>(context, listen: false).switchTheme();
+        }
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return AnimatedSplashScreen(
-      splash: 'assets/splash-screen.png',
+      splash: isDarkTheme
+          ? 'assets/splash-screen-dark.png'
+          : 'assets/splash-screen.png',
+      backgroundColor: isDarkTheme ? Colors.black : Colors.white,
       nextScreen: HomePage(),
       splashTransition: SplashTransition.scaleTransition,
       splashIconSize: 250,

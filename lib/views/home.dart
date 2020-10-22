@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../helper/data.dart';
 import '../helper/widgets.dart';
 import '../models/categoryModel.dart';
@@ -15,6 +16,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  SharedPreferences applicationPreference;
+  bool isDarkTheme = false;
   bool _loading;
   var newslist;
 
@@ -35,7 +38,10 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-
+    SharedPreferences.getInstance().then((pref) {
+      applicationPreference = pref;
+      isDarkTheme = applicationPreference.getBool("isDarkTheme");
+    });
     categories = getCategories();
     getNews();
   }
@@ -53,7 +59,11 @@ class _HomePageState extends State<HomePage> {
                     Icons.wb_sunny,
                   )
                 : Icon(FontAwesomeIcons.solidMoon),
-            onPressed: () => theme.switchTheme()),
+            onPressed: () {
+              theme.switchTheme();
+              isDarkTheme = !isDarkTheme;
+              applicationPreference.setBool("isDarkTheme", isDarkTheme);
+            }),
       ),
       drawer: Drawer(
         child: SafeArea(
