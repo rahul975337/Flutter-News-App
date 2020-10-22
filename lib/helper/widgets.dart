@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import '../views/article_view.dart';
 
-Widget MyAppBar() {
+Widget MyAppBar(IconButton iconButton) {
   return AppBar(
     title: Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
         Text(
           "Flutter",
-          style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600),
+          style: TextStyle(fontWeight: FontWeight.w600),
         ),
         Text(
           "News",
@@ -16,18 +16,8 @@ Widget MyAppBar() {
         )
       ],
     ),
-    backgroundColor: Colors.white,
     elevation: 1.0,
-    actions: <Widget>[
-      Opacity(
-        opacity: 0.8,
-        child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Icon(
-              Icons.share,
-            )),
-      )
-    ],
+    actions: <Widget>[iconButton],
   );
 }
 
@@ -81,15 +71,12 @@ class NewsTile extends StatelessWidget {
                       height: 12,
                     ),
                     Container(
-                      color: Colors.grey[200],
                       padding: EdgeInsets.symmetric(horizontal: 16),
                       child: Text(
                         title,
                         maxLines: 2,
                         style: TextStyle(
-                            color: Colors.black87,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500),
+                            fontSize: 20, fontWeight: FontWeight.w500),
                       ),
                     ),
                     SizedBox(
@@ -100,7 +87,7 @@ class NewsTile extends StatelessWidget {
                       child: Text(
                         desc,
                         maxLines: 2,
-                        style: TextStyle(color: Colors.black54, fontSize: 14),
+                        style: TextStyle(color: Colors.grey, fontSize: 14),
                       ),
                     )
                   ],
