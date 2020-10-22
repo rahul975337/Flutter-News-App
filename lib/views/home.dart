@@ -1,11 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../helper/data.dart';
 import '../helper/widgets.dart';
 import '../models/categoryModel.dart';
 import '../views/category_news.dart';
-
 import '../helper/news.dart';
+import '../helper/theme.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -40,9 +42,19 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Provider.of<ThemeNotifier>(context);
     final deviceSize = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: MyAppBar(),
+      appBar: MyAppBar(
+        IconButton(
+            splashRadius: 25.0,
+            icon: theme.myTheme == MyTheme.Light
+                ? Icon(
+                    Icons.wb_sunny,
+                  )
+                : Icon(FontAwesomeIcons.solidMoon),
+            onPressed: () => theme.switchTheme()),
+      ),
       drawer: Drawer(
         child: SafeArea(
           child: Center(child: Text('Categories can be added here')),

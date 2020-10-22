@@ -19,6 +19,8 @@ dependencies:
   share: ^0.6.5+3
   animated_splash_screen: ^1.0.1+2
   swipedetector: ^1.2.0
+  provider:
+  font_awesome_flutter:
 
 
 dev_dependencies:

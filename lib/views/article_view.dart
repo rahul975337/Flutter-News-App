@@ -24,8 +24,7 @@ class _ArticleViewState extends State<ArticleView> {
           children: <Widget>[
             Text(
               "Flutter",
-              style:
-                  TextStyle(color: Colors.black87, fontWeight: FontWeight.w600),
+              style: TextStyle(fontWeight: FontWeight.w600),
             ),
             Text(
               "News",
