@@ -23,6 +23,12 @@ dependencies:
   provider:
   font_awesome_flutter:
   date_format: ^1.0.9
+  flutter_launcher_icons: ^0.8.1
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon.png"
 
 dev_dependencies:
   flutter_test:
