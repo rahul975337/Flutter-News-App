@@ -47,8 +47,7 @@ class _CategoryNewsState extends State<CategoryNews> {
             ),
             Text(
               '${widget.newsCategory}'.substring(1),
-              style:
-                  TextStyle(color: Colors.black87, fontWeight: FontWeight.w600),
+              style: TextStyle(fontWeight: FontWeight.w600),
             ),
           ],
         ),
@@ -62,7 +61,6 @@ class _CategoryNewsState extends State<CategoryNews> {
                 )),
           )
         ],
-        backgroundColor: Colors.white,
         elevation: 1.0,
       ),
       body: _loading
