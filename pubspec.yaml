@@ -1,7 +1,7 @@
 name: newsApp
 description: A new Flutter project.
 
-publish_to: 'none'
+publish_to: "none"
 
 version: 1.0.0+1
 
@@ -18,19 +18,17 @@ dependencies:
   webview_flutter: ^1.0.3
   share: ^0.6.5+3
   animated_splash_screen: ^1.0.1+2
+  shared_preferences: ^0.5.12+2
   swipedetector: ^1.2.0
   provider:
   font_awesome_flutter:
-
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
 flutter:
-
   assets:
     - assets/
 
   uses-material-design: true
-
