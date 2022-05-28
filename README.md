@@ -1,6 +1,6 @@
 # newsApp
+A Flutter News App
 
-A new Flutter project.
 
 ## To Contribute to this repo
 1.Star the repo.  
