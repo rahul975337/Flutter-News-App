@@ -1,4 +1,4 @@
-name: newsApp
+name: news_app
 description: A new Flutter project.
 
 publish_to: "none"
@@ -13,17 +13,17 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.0
-  http: ^0.12.2
-  cached_network_image: ^2.3.3
-  webview_flutter: ^1.0.3
-  share: ^0.6.5+3
+  http: ^0.13.5
+  cached_network_image: ^3.2.2
+  webview_flutter: ^3.0.4
+  share: ^2.0.4
   animated_splash_screen: ^1.0.1+2
-  shared_preferences: ^0.5.12+2
+  shared_preferences: ^2.0.15
   swipedetector: ^1.2.0
   provider:
   font_awesome_flutter:
-  date_format: ^1.0.9
-  flutter_launcher_icons: ^0.8.1
+  date_format: ^2.0.7
+  flutter_launcher_icons: ^0.10.0
 
 flutter_icons:
   android: true
