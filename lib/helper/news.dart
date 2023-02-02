@@ -1,8 +1,8 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-import 'package:newsApp/models/articleModel.dart';
-import 'package:newsApp/secret.dart';
+import 'package:news_app/models/articleModel.dart';
+import 'package:news_app/secret.dart';
 
 class News {
   List<Article> news = [];
@@ -11,7 +11,7 @@ class News {
     String url =
         "http://newsapi.org/v2/top-headlines?country=in&excludeDomains=stackoverflow.com&sortBy=publishedAt&language=en&apiKey=$apiKey";
 
-    var response = await http.get(url);
+    var response = await http.get(Uri.parse(url));
 
     var jsonData = jsonDecode(response.body);
 
@@ -42,7 +42,7 @@ class NewsForCategorie {
     String url =
         "http://newsapi.org/v2/top-headlines?country=in&category=$category&apiKey=$apiKey";
 
-    var response = await http.get(url);
+    var response = await http.get(Uri.parse(url));
 
     var jsonData = jsonDecode(response.body);
 

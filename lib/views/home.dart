@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage> {
   bool _loading;
   var newslist;
 
-  List<CategorieModel> categories = List<CategorieModel>();
+  List<CategorieModel> categories = [];
 
   Future<void> getNews() async {
     setState(() {
